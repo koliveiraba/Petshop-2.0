@@ -1,0 +1,5 @@
+.vscode/settings.json
+*.class
+pom.properties
+*.lst
+Petshop/target/surefire-reports/*
