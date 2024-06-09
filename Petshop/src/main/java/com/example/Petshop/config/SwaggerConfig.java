@@ -2,23 +2,20 @@ package com.example.Petshop.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import springfox.documentation.builders.PathSelectors;
-import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.spi.DocumentationType;
-import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.info.License;
 
 @Configuration
-@EnableSwagger2
 public class SwaggerConfig {
     @Bean
-    public Docket api() {
-        return new Docket(DocumentationType.SWAGGER_2)
-                .select()
-                .apis(RequestHandlerSelectors.basePackage("com.petshop.controller"))
-                .paths(PathSelectors.any())
-                .build();
-    }
+    public OpenAPI petshopOpenAPI() {
+      return new OpenAPI()
+              .info(new Info().title("Petshop API")
+              .description("Petshop API application")
+              .version("v2.0")
+              .license(new License().name("Apache 2.0").url("http://springdoc.org")));
+  }
+
 }
